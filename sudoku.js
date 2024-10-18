@@ -26,12 +26,13 @@ function read() {
 
   let res = []
   for (let i = 0; i < firstSudoku.length; i+=9) {
-    res.push(firstSudoku.slice(i, i + 9))}
-    return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)));
+    res.push(firstSudoku.slice(i, i + 9))
   }
-  return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)))
-  //return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)).join(' ')).join((EOL));
+    return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)));
 }
+
+console.log(read());
+
 
 function findEmpty(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -75,39 +76,31 @@ const validation =(readArr, number, position) => {
   return true
 }
 
-//console.log(solve(read()))
-
-
 function solve(arr) {
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
    * Возвращает игровое поле после попытки его решить.
    */
 
-  console.log(findEmpty(arr));
   if (findEmpty(arr)) {
     for (let i = 1; i < SIZE + 1; i++) {
       let currentNumber = i
       if (validation(currentNumber, findEmpty(arr), arr)) {
         const [r,c] = findEmpty(arr);
-        
-        
         arr[r][c] = currentNumber;
   
         if(solve(arr)) {
           return true;
         }
-        arr[r][c] = '.';
+        arr[r][c] = '-';
       }
     }
   }
 
-  return null
+  
 }
 
-
-
-console.log(solve(read()))
+//console.log(solve(read()))
 
 function isSolved(arr) {
   /**
@@ -117,28 +110,26 @@ function isSolved(arr) {
 
   if (solve(arr)) {
     return arr
-  } else {
-    return false
   }
-
 }
 
-function prettyBoard() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции solve.
-   * Выводит в консоль/терминал судоку.
-   * Подумай, как симпатичнее его вывести.
-   */
+function prettyBoard(arr) {
+  if (isSolved()) {
+    let conclusion = isSolved(arr)
+    let r= conclusion.map(el => el.join(' '))
+    return r.join((EOL))
+  }
+    console.log('НеСмобакиНеПолины!');
+  
 }
 
 
 
-//console.log(read())
-//console.log(solve(read()))
-//console.log(isSolved(solve(read())));
+console.log(read())
+console.log(solve(read()))
+console.log(isSolved(solve(read())));
+console.log(prettyBoard(isSolved(solve(read()))));
 
-
-//isSolved(solve(read()))
 
 
 
