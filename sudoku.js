@@ -1,5 +1,7 @@
-function read() {
+const fs = require('fs');
 
+function read() {
+  const sudoku = fs.readFileSync('./puzzles.txt', 'utf8');
 
   
   /**
