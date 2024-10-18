@@ -43,11 +43,18 @@ function findEmpty(arr) {
   }
 }
 
-function findEntres(arr){
-  for (let i=0; i<arr.length;i++){
-    for (let j=0;j<arr.length;j++)
+function findEntres(arr) {
+  const row = [];
+  const column = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      row.push(arr[i][j]);
+      column.push(arr[j][i]);
+    }
   }
+  return column, row;
 }
+
 function solve(arr) {
 
   /**
@@ -70,4 +77,4 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
-console.log(findEmpty(arr));
+console.log(findEntres(arr));
