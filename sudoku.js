@@ -1,7 +1,21 @@
+let arr = 
+[   
+  [1, '-', 5, 8, '-', 2, '-', '-', '-'],
+  [9, '-', '-', 7, 6, 4, '-', 5, 2],
+  ['-', '-', 4, '-', '-', 8, 1, 9, '-'],
+  [1, 9, '-', '-', 7, 3, '-', 6, 7],
+  [6, 7, 2, '-', 8, 3, '-', 9, '-'],
+  ['-', '-', '-', '-', '-', 6, 1, '-', 5],
+  ['-', '-', '-', 7, 6, '-', '-', '-', 3],
+  [4, 3, '-', '-', 2, '-', 5, '-', 1],
+  [6, '-', '-', 3, '-', 8, 9, '-', '-']
+]
+
 const fs = require('fs');
 
 function read() {
   const sudoku = fs.readFileSync('./puzzles.txt', 'utf8');
+
 
   
   /**
@@ -9,11 +23,21 @@ function read() {
    */
 }
 
-function solve() {
+function solve(arr) {
+ for ( let i =0; i< arr.length; i++){
+  let row = arr[i]
+  console.log('Строка',row)
+  for ( let j = 0 ; j < arr.length; j++){
+    let collumn = arr[j]
+    console.log('Столбец', collumn)
+  }
+ }
+ return 
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
    * Возвращает игровое поле после попытки его решить.
    */
+
 }
 
 function isSolved() {
@@ -30,3 +54,4 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
+solve(arr)
