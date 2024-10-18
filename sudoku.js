@@ -1,5 +1,4 @@
-let arr = 
-[   
+const arr = [
   [1, '-', 5, 8, '-', 2, '-', '-', '-'],
   [9, '-', '-', 7, 6, 4, '-', 5, 2],
   ['-', '-', 4, '-', '-', 8, 1, 9, '-'],
@@ -8,36 +7,37 @@ let arr =
   ['-', '-', '-', '-', '-', 6, 1, '-', 5],
   ['-', '-', '-', 7, 6, '-', '-', '-', 3],
   [4, 3, '-', '-', 2, '-', 5, '-', 1],
-  [6, '-', '-', 3, '-', 8, 9, '-', '-']
-]
+  [6, '-', '-', 3, '-', 8, 9, '-', '-'],
+];
 
+const { log } = require('console');
 const fs = require('fs');
 
 function read() {
   const sudoku = fs.readFileSync('./puzzles.txt', 'utf8');
 
-
-  
   /**
    * Прочесть файл puzzles.txt в кодировке 'utf-8' и вернуть эти данные из функции
    */
 }
 
-function solve(arr) {
- for ( let i =0; i< arr.length; i++){
-  let row = arr[i]
-  console.log('Строка',row)
-  for ( let j = 0 ; j < arr.length; j++){
-    let collumn = arr[j]
-    console.log('Столбец', collumn)
+function findEmpty(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i][j] !== '-') {
+        continue;
+      } else {
+        return [i, j];
+      }
+    }
   }
- }
- return 
+}
+
+function solve(arr) {
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
    * Возвращает игровое поле после попытки его решить.
    */
-
 }
 
 function isSolved() {
@@ -54,4 +54,4 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
-solve(arr)
+console.log(findEmpty(arr));
