@@ -33,6 +33,11 @@ function findEmpty(arr) {
   }
 }
 
+function findEntres(arr){
+  for (let i=0; i<arr.length;i++){
+    for (let j=0;j<arr.length;j++)
+  }
+}
 function solve(arr) {
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
