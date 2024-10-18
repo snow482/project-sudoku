@@ -10,7 +10,7 @@ function read() {
   let res = []
   for (let i = 0; i < firstSudoku.length; i+=9) {
     res.push(firstSudoku.slice(i, i + 9))}
-    return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)));
+    return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)));
   }
  
 
@@ -26,11 +26,12 @@ function isSolved(arr) {
 
 function prettyBoard() {
   if (isSolved()){
-    let conclusion = isSolved()
-  let r= conclusion.map(el => el.join(' '))
-  return r.join((EOL))}
+    let conclusion = read()
+  let r = conclusion.map(el => el.join(' '))
+  return r.join((EOL))
+}
   else{
-    console.log('НеСмобакиНеПолины!');
+    console.log('НеСобакиНеПолины!');
   }
 }
 
