@@ -1,3 +1,4 @@
+
 // let arr = 
 // [   
 //   [1, '-', 5, 8, '-', 2, '-', '-', '-'],
@@ -29,7 +30,26 @@ function read() {
   return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)).join(' ')).join((EOL));
 }
 console.log(read());
-function solve() {
+
+function findEmpty(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i][j] !== '-') {
+        continue;
+      } else {
+        return [i, j];
+      }
+    }
+  }
+}
+
+function findEntres(arr){
+  for (let i=0; i<arr.length;i++){
+    for (let j=0;j<arr.length;j++)
+  }
+}
+function solve(arr) {
+
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
    * Возвращает игровое поле после попытки его решить.
@@ -50,3 +70,4 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
+console.log(findEmpty(arr));
