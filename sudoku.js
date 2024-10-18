@@ -45,6 +45,22 @@ function findEntres(arr) {
   return column, row;
 }
 
+function findColumn(arr, column) {
+  const columnArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    columnArr.push(arr[column][i]);
+  }
+  return columnArr;
+}
+
+function findRow(arr, row) {
+  const rowArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    rowArr.push(arr[i][row]);
+  }
+  return rowArr;
+}
+
 function solve(arr) {
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
@@ -66,4 +82,3 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
-console.log(findEntres(arr));
