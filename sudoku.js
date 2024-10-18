@@ -1,4 +1,3 @@
-
 // let arr = 
 //   [   
 //     ['1', '-', '5', '8', '-', '2', '-', '-', '-'],
@@ -23,16 +22,16 @@ function read() {
   const data = fs.readFileSync(filePath, "utf8");
   let sudoku = data.split(EOL).slice(0, -1).map(el => {return el.split('')});
   const firstSudoku = sudoku[0]
-  // return firstSudoku
-  let res = []
 
-  for (let i = 0; i < firstSudoku.length; i+=SIZE) {
-    res.push(firstSudoku.slice(i, i + SIZE))
+
+  let res = []
+  for (let i = 0; i < firstSudoku.length; i+=9) {
+    res.push(firstSudoku.slice(i, i + 9))}
+    return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)));
   }
-  return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)))
+  return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : (el)))
   //return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)).join(' ')).join((EOL));
 }
-console.log(read());
 
 function findEmpty(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -106,6 +105,8 @@ function solve(arr) {
   return null
 }
 
+
+
 console.log(solve(read()))
 
 function isSolved(arr) {
@@ -119,6 +120,7 @@ function isSolved(arr) {
   } else {
     return false
   }
+
 }
 
 function prettyBoard() {
@@ -129,11 +131,14 @@ function prettyBoard() {
    */
 }
 
+
+
 //console.log(read())
 //console.log(solve(read()))
 //console.log(isSolved(solve(read())));
 
 
 //isSolved(solve(read()))
+
 
 
