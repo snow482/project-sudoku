@@ -17,14 +17,17 @@ const { EOL } = require("os");
 function read() {
   const filePath = './puzzles.txt';
   const data = fs.readFileSync(filePath, "utf8");
-  let arrToNewArr = data.split(EOL).slice(0, -1);
-  let finalArr = arrToNewArr.map(el => {return el.split('')})
-  let finalArr2 = []
-  for (let i = 0; finalArr.length < 9; i++) {
-    finalArr2.push(i)
+  let sudoku = data.split(EOL).slice(0, -1).map(el => {return el.split('')});
+  const firstSudoku = sudoku[0]
+  // return firstSudoku
+  let res = []
+
+  for (let i = 0; i < firstSudoku.length; i+=9) {
+    res.push(firstSudoku.slice(i, i + 9))
+
+  }
+  return res.map(elArr => elArr.map(el => el === '-' ? ['-'] : Number(el)).join(' ')).join((EOL));
 }
-  return finalArr
-};
 console.log(read());
 function solve() {
   /**
